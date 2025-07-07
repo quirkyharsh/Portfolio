@@ -5,12 +5,16 @@
 }
 
 /* Home page */
-#home{
+#home {
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
     background-image: url(../images/home-background.jpg);
     background-size: cover;
     background-position: center;
+    display: flex; /* Flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack items vertically */
     border-bottom: 6px solid black;
 }
 
@@ -39,6 +43,22 @@
     cursor: pointer;
     margin-left: 120px; /* Move the logo slightly right */
 }
+
+
+.profile-image {
+    height: 250px;
+    width: 250px;
+    background-image: url(../images/Harsh.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    transition: transform 0.3s ease; /* Smooth animation */
+    transform-origin: top right; /* Set pivot point to top right */
+}
+.profile-image:hover {
+    transform: rotate(5deg); /* Tilt the image slightly on hover */
+}
+
 
 nav ul {
     list-style: none;
@@ -96,7 +116,36 @@ nav ul li a:hover {
     border-radius: 4px; /* Optional: Rounded corners on hover */
 }
 
-#About{
+.hero-section {
+    display: flex;
+    align-items: center; /* vertically center */
+    justify-content: center; /* center everything horizontally */
+    gap: 50px; /* space between image and text */
+    margin-top: 50px; /* adjust distance from header */
+}
+
+.hero-container {
+    margin-right: 380px; /* Adjust this to shift left or right */
+}
+
+.hero-title {
+    font-family: "Shadows Into Light", cursive;
+    color: #000;
+    font-size: 60px;
+    text-align: center; /* Keeps the text centered within the container */
+    margin-bottom: -10px;
+}
+
+.hero-info {
+    font-family: "Shadows Into Light", cursive;
+    color: #000;
+    font-size: 40px;
+    text-align: center; /* Keeps the text centered within the container */
+    margin-bottom: 70px;
+}
+
+
+.About{
     width: 100%;
     height: 100vh;    
     background-color: #fff;
@@ -119,7 +168,7 @@ nav ul li a:hover {
     box-shadow: 10px 10px 0 #000;
     color: #000;
     margin-left: 380px;
-    margin-top: 50px;
+    margin-top: 90px;
     
 }
 
@@ -128,15 +177,20 @@ nav ul li a:hover {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-#whoami {
+
+.whoami {
     height: 200px;
     width: 590px;
     background-color: #000;
     margin-left: 220px;
-    margin-top: 40px;
-    transform: rotate(1deg);
+    margin-top: 60px;
+    transform: rotate(2deg);
     color: #fff;
     padding: 20px;
+}
+
+.whoami:hover {
+    transform: rotate(0deg); /* Straighten on hover */
 }
 
 .intro-title{
@@ -149,10 +203,56 @@ nav ul li a:hover {
     border-bottom: 4px solid #fff;
     padding-bottom: 10px;
 }
+
+
+
+
 .intro-descripition{
     font-size: clamp(0.8rem, 2vw, 1.2rem);
     line-height: 1.6;
     color: #fff;
     font-weight: 600;
     letter-spacing: 1px;
+}
+
+.certification-box{
+    font-size: clamp(1rem, 2vw, 2rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transform: skew(-2deg);
+    display: inline-block;
+    border: 6px solid #000;
+    padding: 15px 30px;
+    background: #fff;
+    box-shadow: 10px 10px 0 #000;
+    color: #000;
+    margin-left: 360px;
+    margin-top: 50px;
+}
+
+.certification-box:hover {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.certificate-image{
+    height: 140px;
+    width: 210px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    border-bottom: 2px solid black; /* Thicker bottom border */
+    border-left: 2px solid black;   /* Thin side borders */
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    border-radius: 15px;
+}
+
+.certificate-image-align{
+    margin-left: 60px;
+    margin-top: 60px;
+}
+
+.certificate-image:hover{
+    transform: scale(1.1);
 }
