@@ -1,258 +1,467 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Home page */
-#home {
-    width: 100%;
-    height: 100vh; /* Full viewport height */
-    background-image: url(../images/home-background.jpg);
-    background-size: cover;
-    background-position: center;
-    display: flex; /* Flexbox to center content */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    flex-direction: column; /* Stack items vertically */
-    border-bottom: 6px solid black;
+:root {
+  --header-height: 60px;
 }
 
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* === Header Section === */
 #header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 60px; /* Header height */
-    background: #000;
-    z-index: 1000;
-    border-bottom: 8px solid #fff;
-    box-shadow: 0 4px 0 #000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: black;         /* Ensure solid black background */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 2rem;
+  gap: 2rem;
+  z-index: 1500;
+  border-bottom: 6px solid black;  /* Black line as part of header */
+}
+
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .logo {
-    width: 40px;
-    height: 40px;
-    background-image: url(../images/HP_logo.png);
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-left: 120px; /* Move the logo slightly right */
+  width: 40px;
+  height: 40px;
+  background: url(../images/HP_logo.png) center/cover no-repeat;
+  border-radius: 50%;
 }
-
-
-.profile-image {
-    height: 250px;
-    width: 250px;
-    background-image: url(../images/Harsh.png);
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-    transition: transform 0.3s ease; /* Smooth animation */
-    transform-origin: top right; /* Set pivot point to top right */
-}
-.profile-image:hover {
-    transform: rotate(5deg); /* Tilt the image slightly on hover */
+.nav{
+  margin-left: 2rem;
+  padding: 0;
 }
 
 
 nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end; /* Makes sure items stay to the right inside nav */
-    align-items: center;
-    margin: 0; /* Important to remove default margin */
-    padding: 0;
-    margin-right: 120px;
+  list-style: none;
+  display: flex;
+  gap: 0.1rem; /* reduced gap between nav items */
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li {
-    height: 60px; /* Same as header height */
-    position: relative;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden; /* Ensures no extra line peeks out */
 }
 
-nav ul li::before {
-    content: '';
-    position: absolute;
-    left: 0;  /* Line on the left side */
-    top: 0;
-    width: 1px;
-    height: 100%;
-    background-color: white;
+/* Show divider only between items */
+nav ul li + li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background-color: white;
+  transition: background-color 0.3s;
+  z-index: 2;
 }
 
-nav ul li::after {
-    content: '';
-    position: absolute;
-    right: 0; /* Line on the right side */
-    top: 0;
-    width: 1px;
-    height: 100%;
-    background-color: white;
+/* Hide divider on hover of li */
+nav ul li:hover::before {
+  background-color: transparent;
 }
-
 
 nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 400; /* Normal weight (you can go as low as 100) */
-    font-size: 14px;  /* Smaller text size */
-    display: block;
-    height: 100%;
-    line-height: 60px; /* Keeps text vertically centered */
-    padding: 0 20px;
-    transition: all 0.3s ease;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 1;
+  padding: 0.50rem 0.9rem;
 }
 
-
-
-nav ul li a:hover {
-    background-color: white; /* Background turns white */
-    color: black; /* Text turns black for contrast */
-    border-radius: 4px; /* Optional: Rounded corners on hover */
+nav ul li:hover a {
+  background-color: white;
+  color: black;
 }
+
+/* === Hero Section === */
+#home {
+  padding-top: calc(var(--header-height) + 12px); /* 6px = black border height */
+  background: url(../images/home-background.jpg) center/cover no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
 
 .hero-section {
-    display: flex;
-    align-items: center; /* vertically center */
-    justify-content: center; /* center everything horizontally */
-    gap: 50px; /* space between image and text */
-    margin-top: 50px; /* adjust distance from header */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px; /* or even 900px */
+  width: 100%;
+  padding: 2rem;
+  gap: 3rem; /* Optional: Reduce gap if still compressed */
 }
 
-.hero-container {
-    margin-right: 380px; /* Adjust this to shift left or right */
+
+.hero-text {
+  flex: 1;
+  text-align: left;
+}
+
+.hero-title,
+.hero-info {
+  font-family: 'Shadows Into Light', cursive;
+  color: #000;
 }
 
 .hero-title {
-    font-family: "Shadows Into Light", cursive;
-    color: #000;
-    font-size: 60px;
-    text-align: center; /* Keeps the text centered within the container */
-    margin-bottom: -10px;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .hero-info {
-    font-family: "Shadows Into Light", cursive;
-    color: #000;
-    font-size: 40px;
-    text-align: center; /* Keeps the text centered within the container */
-    margin-bottom: 70px;
+  font-size: 2rem;
+}
+
+.profile-image {
+  height: 250px;
+  width: 250px;
+  background: url(../images/Harsh.png) center/cover no-repeat;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  transform-origin: top right;
+}
+
+.profile-image:hover {
+  transform: rotate(5deg);
+}
+
+.line-white {
+  height: 6px;
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  top: var(--header-height);
+  z-index: 999;
+}
+
+.line-white {
+  height: 6px;
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  top: var(--header-height);
+  z-index: 999;
+  pointer-events: none;
+}
+
+.line-black {
+  height: 6px;
+  background-color: black;
+  width: 100%;
+  position: fixed;
+  top: calc(var(--header-height) + 6px);
+  z-index: 998;
+  pointer-events: none;
 }
 
 
-.About{
-    width: 100%;
-    height: 100vh;    
-    background-color: #fff;
-    background-image:  url(../images/About-Background.jpg);
-    background-size: cover;
-    background-position: center;        
-}
+/* === About Section === */
+.About {
+  width: 100%;
+  min-height: 100vh;
+  background: url(../images/About-Background.jpg) center/cover no-repeat;
+  padding: 2rem;
 
-.About-box{
-    font-size: clamp(1rem, 2vw, 2rem);
-    font-weight: 900;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    transform: skew(-2deg);
-    display: inline-block;
-    border: 6px solid #000;
-    padding: 15px 30px;
-    background: #fff;
-    box-shadow: 10px 10px 0 #000;
-    color: #000;
-    margin-left: 380px;
-    margin-top: 90px;
-    
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
-.About-box:hover {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+.About-box {
+  font-size: clamp(1rem, 2vw, 2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transform: skew(-2deg);
+  display: inline-block;
+  border: 6px solid #000;
+  padding: 1rem 2rem;
+  background: #fff;
+  box-shadow: 10px 10px 0 #000;
+  color: #000;
+  text-align: center;
+  margin-left: 10rem;
+  margin-bottom: 3rem;
 }
 
 
 .whoami {
-    height: 200px;
-    width: 590px;
+  max-width: 600px;
+  background-color: #000;
+  transform: rotate(2deg);
+  color: #fff;
+  padding: 1.5rem;
+  margin: 2rem auto;
+}
+
+.intro-title {
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 4px solid #fff;
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
+}
+
+.intro-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+/* === Certifications === */
+.certification-page {
+  width: 100%;
+  min-height: 100vh;
+  background: url(../images/About-Background.jpg) center/cover no-repeat;
+  padding: 2rem;
+  text-align: center;
+}
+
+.certification-box {
+  font-size: clamp(1rem, 2vw, 2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transform: skew(-2deg);
+  display: inline-block;
+  border: 6px solid #000;
+  padding: 1rem 2rem;
+  background: #fff;
+  box-shadow: 10px 10px 0 #000;
+  color: #000;
+  margin-bottom: 1.5rem; /* space below the box */
+}
+
+.section-line-certification {
+  height: 4px;
+  background-color: #000;
+  width: 100px;
+  margin: 0 auto 2rem;
+}
+
+.certificate-image-align {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* allows wrapping on smaller screens */
+  gap: 1rem;
+}
+
+.certificate-image {
+  height: 140px;
+  width: 210px;
+  border: 2px solid black;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.certificate-image:hover {
+  transform: scale(1.1);
+}
+
+/* === Education Section === */
+#education {
+  position: relative;
+  width: 100%;
+  min-height: 200vh;
+  background: url(../images/Black-wallpaper.jpg) center/cover no-repeat;
+  padding: 2rem;
+}
+
+.education-box {
+  font-size: clamp(1rem, 2vw, 2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transform: skew(-2deg);
+  display: inline-block;
+  border: 6px solid white;
+  padding: 1rem 2rem;
+  background: #fff;
+  box-shadow: 10px 10px 0 white;
+  color: #000;
+  margin: 2rem auto;
+}
+
+.vertical-line {
+  position: absolute;
+  top: 260px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 180vh;
+  width: 6px;
+  background-color: white;
+  z-index: 0;
+}
+
+.diamond {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  z-index: 1;
+  border: 2px solid black;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.diamond-1 {
+  top: 60px;
+}
+
+.diamond-2 {
+  top: 530px;
+}
+
+.educational-box-1,
+.educational-box-2 {
+  width: 90%;
+  max-width: 320px;
+  background: #000;
+  color: #fff;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  transform: skewX(-2deg);
+  border: 6px solid white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.educational-box-1:hover,
+.educational-box-2:hover {
+  transform: skewX(0);
+}
+
+.education-title {
+  color: white;
+  font-size: 1.2rem;
+  font-family: "Libertinus Mono", monospace;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.education-institute,
+.education-year,
+.education-descripition {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.education-descripition {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* === Media Queries === */
+@media screen and (max-width: 768px) {
+  /* Hamburger icon visible */
+  .menu-toggle {
+      position: relative; /* So z-index applies */
+      z-index: 2000;  
+    display: block;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  /* Stack items in hero section */
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  /* Responsive nav */
+  nav ul {
+    display: none;
+    flex-direction: column;
     background-color: #000;
-    margin-left: 220px;
-    margin-top: 60px;
-    transform: rotate(2deg);
-    color: #fff;
-    padding: 20px;
-}
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    z-index: 999;
+  }
 
-.whoami:hover {
-    transform: rotate(0deg); /* Straighten on hover */
-}
+  nav ul.active {
+    display: flex;
+  }
 
-.intro-title{
-    font-size: clamp(1rem, 2vw, 1rem);
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    border-bottom: 4px solid #fff;
-    padding-bottom: 10px;
-}
+  nav ul li {
+    text-align: center;
+    border-top: 1px solid #444;
+  }
 
+  nav ul li a {
+    padding: 1rem;
+  }
 
+  /* Adjust vertical timeline line and diamonds */
+  .vertical-line,
+  .diamond-1,
+  .diamond-2 {
+    left: 10%;
+    transform: translateX(0%) rotate(45deg);
+  }
 
+  /* Center the About-box if it had margin-left previously */
+  .About-box {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-.intro-descripition{
-    font-size: clamp(0.8rem, 2vw, 1.2rem);
-    line-height: 1.6;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-.certification-box{
-    font-size: clamp(1rem, 2vw, 2rem);
-    font-weight: 900;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    transform: skew(-2deg);
-    display: inline-block;
-    border: 6px solid #000;
-    padding: 15px 30px;
-    background: #fff;
-    box-shadow: 10px 10px 0 #000;
-    color: #000;
-    margin-left: 360px;
-    margin-top: 50px;
-}
-
-.certification-box:hover {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-.certificate-image{
-    height: 140px;
-    width: 210px;
-    margin-left: 10px;
-    box-sizing: border-box;
-    border-bottom: 2px solid black; /* Thicker bottom border */
-    border-left: 2px solid black;   /* Thin side borders */
-    border-right: 2px solid black;
-    border-top: 2px solid black;
-    border-radius: 15px;
-}
-
-.certificate-image-align{
-    margin-left: 60px;
-    margin-top: 60px;
-}
-
-.certificate-image:hover{
-    transform: scale(1.1);
+  .certification-box{
+    margin: 2rem auto;
+  }
 }
