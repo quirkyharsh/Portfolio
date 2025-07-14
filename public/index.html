@@ -13,6 +13,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libertinus+Mono&display=swap" rel="stylesheet">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,7 +38,7 @@
                         <li><a href="#About">About</a></li>
                         <li><a href="#certification">Certification</a></li>
                         <li><a href="#education">Education</a></li>
-                        <li><a href="#">Project</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -60,7 +65,7 @@
     <section class="About">
         <div>
             <h1 class="About-box">About Me</h1>
-            <div class="section-line section-line-aboutme"></div>
+            <div class="section-line section-line-about"></div>
             <div class="whoami">
                 <h2 class="intro-title">Who am I?</h2>
                 <p>Hello, my name is Harsh. I’m passionate about playing the mandolin, which allows me to express my creativity and love for music. I chose to pursue Computer Science and Engineering because I’m fascinated by technology and its potential to solve real-world problems. I believe that combining my technical skills with my creative interests will enable me to innovate and make a meaningful impact in the world.</p>
@@ -87,8 +92,10 @@
 
 
     <section id="education">
-        <h1 class="education-box">Education</h1>
-        <div class="section-line section-line-education"></div>
+        <div class="education-heading-wrapper">
+            <h1 class="education-box ">Education</h1>
+            <div class="section-line section-line-education"></div>
+        </div>
 
         <div class="vertical-line"> 
             <div class="diamond diamond-1"></div>
@@ -96,7 +103,7 @@
         </div>
 
 
-        <div class="educational-box-1">
+        <div class="educational-box-1 education-box-1-align">
             <h2 class="education-title">School Education <br> (SSC & HSC)</h2>
             <hr>
             <h3 class="education-institute">St. Xavier's High School, Kolhapur</h3>
@@ -104,13 +111,23 @@
             <h4 class="education-descripition">Completed secondary and higher secondary education with 90% in Class 10 and 80% in Class 12. Scored 100% in Mathematics in Class 10, and in Class 12 secured 99 in Mathematics and 96 in Computer Science.</h4>
         
         </div>
-        <div class="educational-box-2">
+        <div class="educational-box-2 education-box-2-align">
             <h2 class="education-title">Bachelor of Engineering in CSE</h2>
             <hr>
             <h3 class="education-institute">NMIET, Pune</h3>
             <h3 class="education-year">April 2010 - June 2022</h3>
             <h4 class="education-descripition">Specializing in software engineering and data structures, with hands-on experience in real-world projects. Actively participating in coding competitions and hackathons to enhance problem-solving and development skills</h4>
         
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-box">
+            <form class="contact-form">
+                <input class="your-name" placeholder="Your Name"></input>
+                <input class="your-email" placeholder="Your Email"></input>
+                <input class="your-message" placeholder="Your Message"></input>
+            </form>
         </div>
     </section>
     <script src="../src/script.js" defer></script>

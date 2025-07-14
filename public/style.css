@@ -19,6 +19,7 @@ body {
   left: 0;
   width: 100%;
   height: var(--header-height);
+  font-family: Merriweather, Bold;
   background-color: black;         /* Ensure solid black background */
   display: flex;
   align-items: center;
@@ -64,34 +65,24 @@ body {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 0.1rem; /* reduced gap between nav items */
   margin: 0;
   padding: 0;
+  gap: 0rem;
 }
 
 nav ul li {
   position: relative;
   display: flex;
-  align-items: stretch;
-  overflow: hidden; /* Ensures no extra line peeks out */
 }
 
-/* Show divider only between items */
-nav ul li + li::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 100%;
-  background-color: white;
-  transition: background-color 0.3s;
-  z-index: 2;
+/* Divider between items using border-left instead of ::before */
+nav ul li + li {
+  border-left: 2px solid white;
 }
 
-/* Hide divider on hover of li */
-nav ul li:hover::before {
-  background-color: transparent;
+/* Remove background-color transition from pseudo-element — no longer needed */
+nav ul li::before {
+  display: none;
 }
 
 nav ul li a {
@@ -100,15 +91,21 @@ nav ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  transition: background-color 0.3s, color 0.3s;
-  z-index: 1;
-  padding: 0.50rem 0.9rem;
+  padding: 0.5rem 1.2rem;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  font-size: 14px;
 }
 
+/* Full white background on hover */
 nav ul li:hover a {
   background-color: white;
   color: black;
+}
+
+/* Optional: make sure the border doesn't break the full white look */
+nav ul li:hover {
+  border-left-color: transparent;
 }
 
 /* === Hero Section === */
@@ -224,8 +221,27 @@ nav ul li:hover a {
   box-shadow: 10px 10px 0 #000;
   color: #000;
   text-align: center;
-  margin-left: 10rem;
-  margin-bottom: 3rem;
+  margin-left: 11rem;
+  margin-bottom: 2.4rem;
+  text-align: center;
+}
+
+.About-box:hover {
+  background-color: #000;
+  color: #fff;
+  box-shadow: 15px 15px 0 white; /* optional pop effect */
+  transform: skew(-2deg) scale(1.05); /* slightly grow */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.section-line-about{
+  height: 4px;
+  background-color: #000;
+  width: 100px;
+  margin: 0 auto 2rem;
+  margin-bottom: 6rem;
+  
 }
 
 
@@ -236,6 +252,10 @@ nav ul li:hover a {
   color: #fff;
   padding: 1.5rem;
   margin: 2rem auto;
+}
+
+.whoami:hover{
+  transform: rotate(0deg);
 }
 
 .intro-title {
@@ -274,6 +294,16 @@ nav ul li:hover a {
   box-shadow: 10px 10px 0 #000;
   color: #000;
   margin-bottom: 1.5rem; /* space below the box */
+   margin: 2rem auto; 
+}
+
+.certification-box:hover{
+    background-color: #000;
+  color: #fff;
+  box-shadow: 15px 15px 0 white; /* optional pop effect */
+  transform: skew(-2deg) scale(1.05); /* slightly grow */
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .section-line-certification {
@@ -281,6 +311,7 @@ nav ul li:hover a {
   background-color: #000;
   width: 100px;
   margin: 0 auto 2rem;
+  margin-bottom: 6rem;
 }
 
 .certificate-image-align {
@@ -324,6 +355,28 @@ nav ul li:hover a {
   box-shadow: 10px 10px 0 white;
   color: #000;
   margin: 2rem auto;
+  text-align: center;
+}
+
+.education-box:hover{
+  max-width: 600px;
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem;
+  margin: 2rem auto;
+}
+
+.education-heading-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.section-line-education {
+  height: 4px;
+  background-color: #fff;
+  width: 100px;
+  margin: 0 auto 2rem;
+  margin-bottom: 6rem;
 }
 
 .vertical-line {
@@ -336,6 +389,7 @@ nav ul li:hover a {
   background-color: white;
   z-index: 0;
 }
+
 
 .diamond {
   position: absolute;
@@ -357,8 +411,7 @@ nav ul li:hover a {
   top: 530px;
 }
 
-.educational-box-1,
-.educational-box-2 {
+.educational-box-1{
   width: 90%;
   max-width: 320px;
   background: #000;
@@ -369,12 +422,37 @@ nav ul li:hover a {
   border: 6px solid white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+  position: relative;
 }
+
+
+.educational-box-2 {
+  width: 90%;
+  max-width: 320px;
+  background: #000;
+  color: #fff;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  transform: skewX(2deg);
+  border: 6px solid white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.education-box-1-align{
+  margin-left: 13%; /* Top, Right, Bottom, Left */
+}
+
+.education-box-2-align{
+  margin-right: 13%; /* Top, Right, Bottom, Left */
+}
+
 
 .educational-box-1:hover,
 .educational-box-2:hover {
   transform: skewX(0);
 }
+
 
 .education-title {
   color: white;
@@ -397,9 +475,62 @@ nav ul li:hover a {
   margin-top: 1rem;
 }
 
-/* === Media Queries === */
+#contact{
+  position: relative;
+  width: 100%;
+  min-height: 200vh;
+  background: url(../images/Black-wallpaper.jpg) center/cover no-repeat;
+  padding: 2rem;
+  display: grid;
+  
+}
+
+.contact-box{
+    display: flex;
+    background: #fff;
+    padding: 30px;
+    border: 8px solid #fff;
+    transform: rotate(1deg);
+    width: 40%;
+    min-height: 22rem;
+    height: auto;
+    margin-left: 55%;
+    margin-top: 240px;
+}
+
+.your-name{
+  height: 3rem;
+  width: 100%;
+  border: 3px solid black ;
+}
+
+.your-email{
+  margin-top: 1rem;
+  height: 3rem;
+  width: 100%;
+  border: 3px solid black ;
+}
+
+.your-message{
+  margin-top: 1rem;
+  height: 9rem;
+  width: 100%;
+  border: 3px solid black ;
+  font-size: 1rem;
+}
+
+.your-name,
+.your-email{
+  padding: 0.5rem; /* Adjust as needed */
+  font-size: 1rem;
+}
+ 
+
+
+/* === Media Queries === */  /* Tablets */
 @media screen and (max-width: 768px) {
   /* Hamburger icon visible */
+  
   .menu-toggle {
       position: relative; /* So z-index applies */
       z-index: 2000;  
@@ -457,11 +588,101 @@ nav ul li:hover a {
 
   /* Center the About-box if it had margin-left previously */
   .About-box {
-    margin-left: auto;
+    margin-left: 12rem;
+  }
+
+  .certification-box {
+    display: inline-block;
+    margin: 1.5rem auto;
+    padding: 1rem 1.5rem;
+    font-size: 1.3rem;
+    max-width: 95%;  /* prevent overflow */
+    word-wrap: break-word;
+    box-sizing: border-box;
+  }
+
+  .certificate-image {
+    width: 90%;
+    height: auto;
+  }
+
+  .certificate-image-align {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .certification-page {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .education-box {
+    font-size: 1.5rem; /* Adjust font size for better fit */
+    margin: 2rem auto; /* Center the box horizontally */
+    padding: 1rem 1.5rem; /* Slightly reduce padding */
+    text-align: center;   /* Ensure text stays centered */
+  }
+
+  .educational-box-1 {
+    margin-left: 0%;
     margin-right: auto;
   }
 
-  .certification-box{
-    margin: 2rem auto;
+  .educational-box-2 {
+    margin-right: 0%;
+    margin-left: auto;
   }
+
+  .vertical-line {
+    left: 10%;
+    transform: translateX(0);
+    height: 100%;
+    width: 4px;
+  }
+
+  .diamond {
+    left: 10%;
+    transform: translateX(0) rotate(45deg);
+  }
+}
+/* Phone */
+@media screen and (max-width: 480px) {
+
+  .profile-image{
+    width: clamp(240px, 50vw, 300px);
+    height: clamp(240px, 50vw, 300px);
+  }
+  /* Center the certification box and adjust width */
+  .certification-box {
+    margin: 1.5rem auto;
+    max-width: 90%;
+    font-size: 1.2rem; /* Optional: make font a bit smaller */
+    padding: 0.8rem 1.2rem;
+  }
+
+  /* Make sure images scale down on smaller screens */
+  .certificate-image {
+    width: 90%;
+    height: auto;
+  }
+
+  /* Optional: Add spacing between images */
+  .certificate-image-align {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Center everything inside the certification section */
+  .certification-page {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .About-box {
+    margin-left: 1.2rem;
+  }
+
+  
 }
